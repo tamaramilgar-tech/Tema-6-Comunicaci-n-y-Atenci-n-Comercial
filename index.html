@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unidad 6 · Comunicación y atención comercial</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:,">
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/teacher-gate.js" defer></script>
+  <script src="js/certificate.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+
+<body>
+<header class="header">
+  <div class="container">
+    <h1>Unidad 6 · Comunicación y atención comercial</h1>
+
+    <input id="studentName" type="text" placeholder="Nombre del alumno/a">
+
+    <p id="phase1Badge">FASE 1: pendiente</p>
+    <p id="phase2Badge">FASE 2: bloqueada</p>
+    <p id="phase3Badge">FASE 3: bloqueada</p>
+    <p id="phase4Badge">FASE 4: bloqueada</p>
+    <p id="phase5Badge">FASE 5: bloqueada</p>
+
+    <button class="tab" data-view="home">Inicio</button>
+    <button class="tab" data-view="phase1">Fase 1</button>
+    <button class="tab" data-view="phase2" disabled id="phase2Tab">Fase 2</button>
+    <button class="tab" data-view="phase3" disabled id="phase3Tab">Fase 3</button>
+    <button class="tab" data-view="phase4" disabled id="phase4Tab">Fase 4</button>
+    <button class="tab" data-view="phase5" disabled id="phase5Tab">Fase 5</button>
+    <button class="tab" data-view="certificate" disabled id="certTab">Certificado</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="view-home">
+<h2>Cómo funciona</h2>
+<p>Supera todas las fases (≥80%) + verificación docente.</p>
+
+<button id="startPhase1Btn">Empezar</button>
+<button id="resetProgressBtn">🔄 Reiniciar</button>
+</section>
+
+<!-- FASE 1 -->
+<section id="view-phase1" class="hidden">
+<h2>FASE 1 · Cliente y proceso de compra</h2>
+<div id="p1Quiz"></div>
+<button id="p1SubmitQuiz">Corregir</button>
+<div id="p1QuizResult"></div>
+</section>
+
+<!-- FASE 2 -->
+<section id="view-phase2" class="hidden">
+<h2>FASE 2 · Análisis comercial</h2>
+
+<div class="teacher-gate">
+<input id="p2CodeInput" type="password" placeholder="Código docente">
+<button id="p2VerifyBtn">Validar</button>
+<p id="p2GateMsg"></p>
+</div>
+
+<div id="p2Quiz"></div>
+<button id="p2SubmitQuiz" disabled>Corregir</button>
+<div id="p2QuizResult"></div>
+</section>
+
+<!-- FASE 3 -->
+<section id="view-phase3" class="hidden">
+<h2>FASE 3 · Atención al cliente</h2>
+
+<div class="teacher-gate">
+<input id="p3CodeInput" type="password">
+<button id="p3VerifyBtn">Validar</button>
+<p id="p3GateMsg"></p>
+</div>
+
+<div id="p3Quiz"></div>
+<button id="p3SubmitQuiz" disabled>Corregir</button>
+<div id="p3QuizResult"></div>
+</section>
+
+<!-- FASE 4 -->
+<section id="view-phase4" class="hidden">
+<h2>FASE 4 · CRM y entorno</h2>
+
+<div class="teacher-gate">
+<input id="p4CodeInput" type="password">
+<button id="p4VerifyBtn">Validar</button>
+<p id="p4GateMsg"></p>
+</div>
+
+<div id="p4Quiz"></div>
+<button id="p4SubmitQuiz" disabled>Corregir</button>
+<div id="p4QuizResult"></div>
+</section>
+
+<!-- FASE 5 -->
+<section id="view-phase5" class="hidden">
+<h2>FASE 5 · Caso final</h2>
+
+<div class="teacher-gate">
+<input id="p5CodeInput" type="password">
+<button id="p5VerifyBtn">Validar</button>
+<p id="p5GateMsg"></p>
+</div>
+
+<div id="p5Quiz"></div>
+<button id="p5SubmitQuiz" disabled>Corregir</button>
+<div id="p5QuizResult"></div>
+</section>
+
+<section id="view-certificate" class="hidden">
+<button id="downloadCertBtn">Descargar certificado</button>
+</section>
+
+</main>
+</body>
+</html>
