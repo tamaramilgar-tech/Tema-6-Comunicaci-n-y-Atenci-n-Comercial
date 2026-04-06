@@ -1,0 +1,85 @@
+
+:root{
+  --bg:#0b1020;
+  --panel:#111a33;
+  --panel-2:#0f1730;
+  --accent:#1c2a57;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.8);
+  --line:rgba(255,255,255,0.10);
+}
+
+*{box-sizing:border-box}
+body{
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+}
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+.header{
+  background:var(--panel-2);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.subtitle{opacity:.88;margin-bottom:14px}
+.student-box{margin:10px 0 14px 0}
+.badges p{margin:6px 0}
+.tabs,.cta-row,.gate-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+  margin-top:16px;
+}
+.card,.teacher-gate{
+  background:var(--panel);
+  padding:16px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  margin:14px 0;
+}
+h1,h2,h3{margin:0 0 10px 0}
+p,li{line-height:1.5}
+button{
+  padding:10px 15px;
+  margin-top:10px;
+  border:0;
+  border-radius:8px;
+  background:var(--accent);
+  color:var(--text);
+  cursor:pointer;
+}
+button:hover{filter:brightness(1.08)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.tab{margin-right:6px;margin-top:10px}
+input[type="text"],input[type="password"]{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+}
+input::placeholder{color:rgba(255,255,255,0.6)}
+.hidden{display:none}
+.msg{margin-top:8px;opacity:.9}
+#resetProgressBtn{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+}
+.quiz-item{
+  margin:12px 0;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:10px;
+  background:rgba(255,255,255,.02);
+}
