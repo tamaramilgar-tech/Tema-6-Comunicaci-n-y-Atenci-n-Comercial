@@ -9,7 +9,6 @@
   <link rel="icon" href="data:,">
 
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
-
   <script src="js/data.js" defer></script>
   <script src="js/teacher-gate.js" defer></script>
   <script src="js/certificate.js" defer></script>
@@ -17,110 +16,188 @@
 </head>
 
 <body>
-<header class="header">
-  <div class="container">
-    <h1>Unidad 6 · Comunicación y atención comercial</h1>
+  <header class="header">
+    <div class="container">
+      <h1>Unidad 6 · Comunicación y atención comercial</h1>
+      <p class="subtitle">FP Grado Superior · Administración y Finanzas · Comunicación y Atención al Cliente</p>
 
-    <input id="studentName" type="text" placeholder="Nombre del alumno/a">
+      <div class="student-box">
+        <label for="studentName">Nombre del alumno/a</label>
+        <input id="studentName" type="text" placeholder="Escribe tu nombre completo" />
+      </div>
 
-    <p id="phase1Badge">FASE 1: pendiente</p>
-    <p id="phase2Badge">FASE 2: bloqueada</p>
-    <p id="phase3Badge">FASE 3: bloqueada</p>
-    <p id="phase4Badge">FASE 4: bloqueada</p>
-    <p id="phase5Badge">FASE 5: bloqueada</p>
+      <div class="badges">
+        <p id="phase1Badge">FASE 1: pendiente</p>
+        <p id="phase2Badge">FASE 2: bloqueada</p>
+        <p id="phase3Badge">FASE 3: bloqueada</p>
+        <p id="phase4Badge">FASE 4: bloqueada</p>
+        <p id="phase5Badge">FASE 5: bloqueada</p>
+      </div>
 
-    <button class="tab" data-view="home">Inicio</button>
-    <button class="tab" data-view="phase1">Fase 1</button>
-    <button class="tab" data-view="phase2" disabled id="phase2Tab">Fase 2</button>
-    <button class="tab" data-view="phase3" disabled id="phase3Tab">Fase 3</button>
-    <button class="tab" data-view="phase4" disabled id="phase4Tab">Fase 4</button>
-    <button class="tab" data-view="phase5" disabled id="phase5Tab">Fase 5</button>
-    <button class="tab" data-view="certificate" disabled id="certTab">Certificado</button>
-  </div>
-</header>
+      <div class="tabs">
+        <button class="tab" data-view="home">Inicio</button>
+        <button class="tab" data-view="phase1">Fase 1</button>
+        <button class="tab" data-view="phase2" id="phase2Tab" disabled>Fase 2</button>
+        <button class="tab" data-view="phase3" id="phase3Tab" disabled>Fase 3</button>
+        <button class="tab" data-view="phase4" id="phase4Tab" disabled>Fase 4</button>
+        <button class="tab" data-view="phase5" id="phase5Tab" disabled>Fase 5</button>
+        <button class="tab" data-view="certificate" id="certTab" disabled>Certificado</button>
+      </div>
+    </div>
+  </header>
 
-<main class="container">
+  <main class="container">
+    <section id="view-home">
+      <div class="hero card">
+        <h2>Cómo funciona</h2>
+        <p>Completa todas las fases con al menos un 80 % y con verificación del docente para descargar el certificado.</p>
+        <ol>
+          <li>Realiza la práctica indicada y entrega la evidencia en EVAGD cuando proceda.</li>
+          <li>El docente verifica la actividad y te facilita un código para desbloquear el test.</li>
+          <li>Aprueba el test de la fase (mínimo 80 %).</li>
+        </ol>
+        <div class="cta-row">
+          <button id="startPhase1Btn">Empezar Fase 1</button>
+          <button id="resetProgressBtn" title="Borra el progreso guardado en este navegador">🔄 Reiniciar progreso</button>
+        </div>
+      </div>
 
-<section id="view-home">
-<h2>Cómo funciona</h2>
-<p>Supera todas las fases (≥80%) + verificación docente.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Bloque 1 · El cliente y la empresa</h3>
+          <p>Empresa orientada al producto, a la venta y al mercado. Cliente interno y externo. Satisfacción y fidelización.</p>
+        </article>
+        <article class="card">
+          <h3>Bloque 2 · Motivaciones y compra</h3>
+          <p>Necesidades, motivaciones, percepción, aprendizaje, creencias y proceso de compra según Kotler.</p>
+        </article>
+        <article class="card">
+          <h3>Bloque 3 · Atención comercial</h3>
+          <p>Departamento de atención al cliente, calidad del servicio, comunicación asertiva y tratamiento de incidencias.</p>
+        </article>
+        <article class="card">
+          <h3>Bloque 4 · Entorno y herramientas</h3>
+          <p>Elementos del entorno comercial, procesos de atención, códigos de conducta y CRM.</p>
+        </article>
+      </div>
+    </section>
 
-<button id="startPhase1Btn">Empezar</button>
-<button id="resetProgressBtn">🔄 Reiniciar</button>
-</section>
+    <section id="view-phase1" class="hidden">
+      <h2>FASE 1 · El cliente, la empresa y el proceso de compra</h2>
+      <p>Contenidos básicos y conceptuales: orientación empresarial, tipos de cliente, motivaciones y fases del proceso de compra.</p>
+      <div id="p1Quiz"></div>
+      <button id="p1SubmitQuiz">Corregir</button>
+      <div id="p1QuizResult"></div>
+    </section>
 
-<!-- FASE 1 -->
-<section id="view-phase1" class="hidden">
-<h2>FASE 1 · Cliente y proceso de compra</h2>
-<div id="p1Quiz"></div>
-<button id="p1SubmitQuiz">Corregir</button>
-<div id="p1QuizResult"></div>
-</section>
+    <section id="view-phase2" class="hidden">
+      <h2>FASE 2 · Actividad EVAGD: análisis del comportamiento de compra</h2>
+      <div class="card">
+        <h3>Entrega obligatoria en EVAGD</h3>
+        <p>Analiza un caso de compra empresarial o de consumidor final identificando: necesidad detectada, búsqueda de información, evaluación de alternativas, decisión final y fase de postcompra.</p>
+        <p><strong>Extensión orientativa:</strong> 1–2 páginas.</p>
+      </div>
 
-<!-- FASE 2 -->
-<section id="view-phase2" class="hidden">
-<h2>FASE 2 · Análisis comercial</h2>
+      <div class="teacher-gate">
+        <h3>Verificación del docente (obligatoria)</h3>
+        <p>Cuando el docente verifique la entrega, te facilitará un código para desbloquear el test.</p>
+        <div class="gate-row">
+          <input id="p2CodeInput" type="password" maxlength="6" placeholder="Código (6 caracteres)">
+          <button id="p2VerifyBtn">Validar</button>
+        </div>
+        <p id="p2GateMsg" class="msg"></p>
+      </div>
 
-<div class="teacher-gate">
-<input id="p2CodeInput" type="password" placeholder="Código docente">
-<button id="p2VerifyBtn">Validar</button>
-<p id="p2GateMsg"></p>
-</div>
+      <div id="p2Quiz"></div>
+      <button id="p2SubmitQuiz" disabled>Corregir</button>
+      <div id="p2QuizResult"></div>
+      <p id="p2TestLockMsg" class="msg"></p>
+    </section>
 
-<div id="p2Quiz"></div>
-<button id="p2SubmitQuiz" disabled>Corregir</button>
-<div id="p2QuizResult"></div>
-</section>
+    <section id="view-phase3" class="hidden">
+      <h2>FASE 3 · Actividad EVAGD: atención comercial y reclamaciones</h2>
+      <div class="card">
+        <h3>Entrega obligatoria en EVAGD</h3>
+        <p>Redacta o representa una respuesta profesional ante una incidencia, sugerencia, queja o reclamación, aplicando un estilo comunicativo asertivo y las fases del proceso de atención al cliente.</p>
+        <p><strong>Formato sugerido:</strong> texto profesional, role play o grabación breve.</p>
+      </div>
 
-<!-- FASE 3 -->
-<section id="view-phase3" class="hidden">
-<h2>FASE 3 · Atención al cliente</h2>
+      <div class="teacher-gate">
+        <h3>Verificación del docente (obligatoria)</h3>
+        <p>Cuando el docente verifique la entrega, te facilitará un código para desbloquear el test.</p>
+        <div class="gate-row">
+          <input id="p3CodeInput" type="password" maxlength="6" placeholder="Código (6 caracteres)">
+          <button id="p3VerifyBtn">Validar</button>
+        </div>
+        <p id="p3GateMsg" class="msg"></p>
+      </div>
 
-<div class="teacher-gate">
-<input id="p3CodeInput" type="password">
-<button id="p3VerifyBtn">Validar</button>
-<p id="p3GateMsg"></p>
-</div>
+      <div id="p3Quiz"></div>
+      <button id="p3SubmitQuiz" disabled>Corregir</button>
+      <div id="p3QuizResult"></div>
+      <p id="p3TestLockMsg" class="msg"></p>
+    </section>
 
-<div id="p3Quiz"></div>
-<button id="p3SubmitQuiz" disabled>Corregir</button>
-<div id="p3QuizResult"></div>
-</section>
+    <section id="view-phase4" class="hidden">
+      <h2>FASE 4 · Actividad EVAGD: entorno comercial, canales y CRM</h2>
+      <div class="card">
+        <h3>Entrega obligatoria en EVAGD</h3>
+        <p>Elige una empresa y analiza sus canales de atención comercial, su entorno físico o digital y el posible uso de un sistema CRM para mejorar la relación con la clientela.</p>
+        <p><strong>Incluye:</strong> puntos fuertes, debilidades y propuestas de mejora.</p>
+      </div>
 
-<!-- FASE 4 -->
-<section id="view-phase4" class="hidden">
-<h2>FASE 4 · CRM y entorno</h2>
+      <div class="teacher-gate">
+        <h3>Verificación del docente (obligatoria)</h3>
+        <p>Cuando el docente verifique la entrega, te facilitará un código para desbloquear el test.</p>
+        <div class="gate-row">
+          <input id="p4CodeInput" type="password" maxlength="6" placeholder="Código (6 caracteres)">
+          <button id="p4VerifyBtn">Validar</button>
+        </div>
+        <p id="p4GateMsg" class="msg"></p>
+      </div>
 
-<div class="teacher-gate">
-<input id="p4CodeInput" type="password">
-<button id="p4VerifyBtn">Validar</button>
-<p id="p4GateMsg"></p>
-</div>
+      <div id="p4Quiz"></div>
+      <button id="p4SubmitQuiz" disabled>Corregir</button>
+      <div id="p4QuizResult"></div>
+      <p id="p4TestLockMsg" class="msg"></p>
+    </section>
 
-<div id="p4Quiz"></div>
-<button id="p4SubmitQuiz" disabled>Corregir</button>
-<div id="p4QuizResult"></div>
-</section>
+    <section id="view-phase5" class="hidden">
+      <h2>FASE 5 · Actividades integradoras y test final</h2>
 
-<!-- FASE 5 -->
-<section id="view-phase5" class="hidden">
-<h2>FASE 5 · Caso final</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Actividad integradora 1</h3>
+          <p>Analiza un caso en el que una empresa cambia de proveedor o de canal comercial. Identifica las fases del proceso de compra y valora si la decisión final ha generado satisfacción o insatisfacción en la postcompra.</p>
+        </article>
+        <article class="card">
+          <h3>Actividad integradora 2</h3>
+          <p>Valora una situación de queja o incidencia real o simulada, identifica el estilo comunicativo empleado, los errores cometidos y propone una actuación profesional centrada en el cliente.</p>
+        </article>
+      </div>
 
-<div class="teacher-gate">
-<input id="p5CodeInput" type="password">
-<button id="p5VerifyBtn">Validar</button>
-<p id="p5GateMsg"></p>
-</div>
+      <div class="teacher-gate">
+        <h3>Verificación del docente (obligatoria)</h3>
+        <p>Cuando el docente verifique la evidencia final, te facilitará un código para desbloquear el test de cierre.</p>
+        <div class="gate-row">
+          <input id="p5CodeInput" type="password" maxlength="6" placeholder="Código (6 caracteres)">
+          <button id="p5VerifyBtn">Validar</button>
+        </div>
+        <p id="p5GateMsg" class="msg"></p>
+      </div>
 
-<div id="p5Quiz"></div>
-<button id="p5SubmitQuiz" disabled>Corregir</button>
-<div id="p5QuizResult"></div>
-</section>
+      <div id="p5Quiz"></div>
+      <button id="p5SubmitQuiz" disabled>Corregir</button>
+      <div id="p5QuizResult"></div>
+      <p id="p5TestLockMsg" class="msg"></p>
+    </section>
 
-<section id="view-certificate" class="hidden">
-<button id="downloadCertBtn">Descargar certificado</button>
-</section>
-
-</main>
+    <section id="view-certificate" class="hidden">
+      <h2>Certificado</h2>
+      <p>El certificado incluye nombre, unidad, resultados por fase y fecha.</p>
+      <p><strong>Requisito:</strong> superar las 5 fases con verificación docente y mínimo 80 %.</p>
+      <button id="downloadCertBtn" disabled>Descargar PDF</button>
+    </section>
+  </main>
 </body>
 </html>
